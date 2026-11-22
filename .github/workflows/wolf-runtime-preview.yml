@@ -3,7 +3,7 @@ name: Publish Wolf RPG preview
 on:
   push:
     branches: [wolf-runtime-preview]
-    paths: [preview/v0.2.0/SHA256SUMS]
+    paths: [preview/v0.2.1/SHA256SUMS]
 
 permissions:
   contents: write
@@ -17,8 +17,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cd preview/v0.2.0
-          cat apk.part-* > WolfRpgMobile-0.2.0.apk
+          cd preview/v0.2.1
+          cat apk.part-* > WolfRpgMobile-0.2.1.apk
           sha256sum --check SHA256SUMS
-          gh release create v0.2.0 WolfRpgMobile-0.2.0.apk WolfRpgMobile-runtime-source.zip \
-            --target "${GITHUB_SHA}" --prerelease --title '울프 RPG 0.2.0 실행 엔진 테스트' --notes-file release.md
+          gh release create v0.2.1 WolfRpgMobile-0.2.1.apk WolfRpgMobile-runtime-source.zip \
+            --target "${GITHUB_SHA}" --prerelease --title '울프 RPG 0.2.1 실행 엔진 테스트' --notes-file release.md
